@@ -1,0 +1,62 @@
+server:
+  port: ${PORT:8000}
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+zuul:
+  ignoredServices: '*'
+#  host:
+#   connect-timeout-millis: 20000
+#   socket-timeout-millis: 20000
+  prefix: /api
+  routes:
+    auth-server:
+      path: /uaa/**
+      sensitiveHeaders:
+      serviceId: auth-server
+    account-service:
+      path: /account/**
+      serviceId: account-service
+    customer-service:
+      path: /customer/**
+      serviceId: customer-service
+    catalog-service:
+      path: /catalog/**
+      serviceId: catalog-service
+    email-service:
+      path: /email/**
+      serviceId: email-service
+  add-proxy-headers: true
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://${auth-server:localhost}:9999/uaa/oauth/token
+      user-authorization-uri: http://${auth-server:localhost}:9999/uaa/oauth/authorize
+    resource:
+      user-info-uri: http://${auth-server:localhost}:9999/uaa/user
+      prefer-token-info: false
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${discovery-service:localhost}:8761/eureka/
+    registerWithEureka: false
