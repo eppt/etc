@@ -44,6 +44,7 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 2
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
+
 security:
   oauth2:
     resource:

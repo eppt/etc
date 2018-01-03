@@ -34,9 +34,9 @@ zuul:
     account-service:
       path: /account/**
       serviceId: account-service
-    customer-service:
-      path: /customer/**
-      serviceId: customer-service
+    organization-service:
+      path: /organization/**
+      serviceId: organization-service
     catalog-service:
       path: /catalog/**
       serviceId: catalog-service
