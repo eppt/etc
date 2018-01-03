@@ -48,10 +48,10 @@ zuul:
 security:
   oauth2:
     client:
-      access-token-uri: http://${auth-server:localhost}:9999/uaa/oauth/token
-      user-authorization-uri: http://${auth-server:localhost}:9999/uaa/oauth/authorize
+      access-token-uri: http://${auth-server:localhost}:8001/uaa/oauth/token
+      user-authorization-uri: http://${auth-server:localhost}:8001/uaa/oauth/authorize
     resource:
-      user-info-uri: http://${auth-server:localhost}:9999/uaa/user
+      user-info-uri: http://${auth-server:localhost}:8001/uaa/user
       prefer-token-info: false
 
 
