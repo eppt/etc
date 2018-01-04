@@ -51,6 +51,7 @@ security:
     resource:
       id: eppt
       user-info-uri: http://${auth-server:localhost}:8000/api/uaa/me
+      filter-order: 3
       prefer-token-info: false
 
 endpoints:
