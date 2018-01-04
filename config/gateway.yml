@@ -31,15 +31,10 @@ zuul:
       path: /uaa/**
       sensitiveHeaders:
       serviceId: auth-server
-    account-service:
-      path: /account/**
-      serviceId: account-service
     organization-service:
       path: /organization/**
+      sensitiveHeaders:
       serviceId: organization-service
-    catalog-service:
-      path: /catalog/**
-      serviceId: catalog-service
     email-service:
       path: /email/**
       serviceId: email-service
@@ -48,10 +43,10 @@ zuul:
 security:
   oauth2:
     client:
-      access-token-uri: http://${auth-server:localhost}:8000/uaa/oauth/token
-      user-authorization-uri: http://${auth-server:localhost}:8000/uaa/oauth/authorize
+      access-token-uri: http://${auth-server:localhost}:8000/api/uaa/oauth/token
+      user-authorization-uri: http://${auth-server:localhost}:8000/api/uaa/oauth/authorize
     resource:
-      user-info-uri: http://${auth-server:localhost}:8000/uaa/me
+      user-info-uri: http://${auth-server:localhost}:8000/api/uaa/me
       prefer-token-info: false
 
 

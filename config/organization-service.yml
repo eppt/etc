@@ -45,12 +45,10 @@ eureka:
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
 
 security:
-  basic:
-    enabled: false
   oauth2:
     resource:
       id: eppt
-      user-info-uri: http://${auth-server:localhost}:8000/uaa/me
+      user-info-uri: http://${auth-server:localhost}:8000/api/uaa/me
       prefer-token-info: false
 
 endpoints:
