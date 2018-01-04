@@ -38,6 +38,10 @@ zuul:
     email-service:
       path: /email/**
       serviceId: email-service
+    storage-service:
+      path: /storage/**
+      sensitiveHeaders:
+      serviceId: storage-service
   add-proxy-headers: true
 
 security:
