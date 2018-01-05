@@ -33,16 +33,22 @@ server:
   session:
     cookie:
       http-only: true
+# eureka:
+#   client:
+#     register-with-eureka: true
+#     fetch-registry: true
+#     serviceUrl:
+#       defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${discovery-service:localhost}:8761/eureka/
+#   instance:
+#     leaseRenewalIntervalInSeconds: 10
+#     leaseExpirationDurationInSeconds: 2
+#     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
 eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${discovery-service:localhost}:8761/eureka/
   instance:
-    leaseRenewalIntervalInSeconds: 10
-    leaseExpirationDurationInSeconds: 2
-    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
+    prefer-ip-address: ${PREFER_IP_ADDRESS}
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${EUREKA_HOSTNAME}:8761/eureka/
 
 security:
   basic:
