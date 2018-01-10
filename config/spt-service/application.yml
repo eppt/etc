@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/espt?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://localhost:3307/espt?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: password
     hikari:
@@ -13,13 +13,13 @@ spring:
         useServerPrepStmts: true
   jpa:
     database: mysql
-    show-sql: true
+    show-sql: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     properties:
       hibernate.id.new_generator_mappings: true
       hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
-      hibernate.generate_statistics: false
+      hibernate.generate_statistics: true
     hibernate:
       ddl-auto: none
       naming:
@@ -29,26 +29,23 @@ spring:
     serialization.indent_output: true
     serialization.write_dates_as_timestamps: false
 server:
-  port: 0
+  # port: 
   session:
     cookie:
       http-only: true
+
 eureka:
-  instance:
-    prefer-ip-address: ${PREFER_IP_ADDRESS}
   client:
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${EUREKA_HOSTNAME}:8761/eureka/
-
+  instance:
+    prefer-ip-address: ${PREFER_IP_ADDRESS}
 security:
-  basic:
-    enabled: false
   oauth2:
     resource:
-      id: eppt
-      user-info-uri: http://${auth-server:localhost}:8000/api/uaa/me
       filter-order: 3
-      prefer-token-info: false
 
 endpoints:
   cors:
@@ -58,7 +55,3 @@ endpoints:
     exposed-headers:
     allow-credentials: true
     max-age: 1800
-
-management:
-  security:
-    enabled: false
