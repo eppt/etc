@@ -22,19 +22,19 @@ endpoints:
 
 zuul:
   ignoredServices: '*'
-#  host:
-#   connect-timeout-millis: 20000
-#   socket-timeout-millis: 20000
+  # host:
+   # connect-timeout-millis: 20000
+   # socket-timeout-millis: 20000
   prefix: /api
   routes:
     auth-server:
       path: /uaa/**
       sensitiveHeaders:
       serviceId: auth-server
-    organization-service:
-      path: /organization/**
+    spt-service:
+      path: /spt/**
       sensitiveHeaders:
-      serviceId: organization-service
+      serviceId: spt-service
     email-service:
       path: /email/**
       serviceId: email-service
