@@ -42,10 +42,16 @@ eureka:
       defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${EUREKA_HOSTNAME}:8761/eureka/
   instance:
     prefer-ip-address: ${PREFER_IP_ADDRESS}
+    
 security:
+  basic:
+    enabled: false
   oauth2:
     resource:
+      id: eppt
+      user-info-uri: http://${auth-server:localhost}:8000/api/uaa/me
       filter-order: 3
+      prefer-token-info: false
 
 endpoints:
   cors:
@@ -55,3 +61,7 @@ endpoints:
     exposed-headers:
     allow-credentials: true
     max-age: 1800
+
+management:
+  security:
+    enabled: false
