@@ -29,7 +29,7 @@ spring:
     serialization.indent_output: true
     serialization.write_dates_as_timestamps: false
 server:
-  # port: 8002
+  port: 0
   session:
     cookie:
       http-only: true
