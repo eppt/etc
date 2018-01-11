@@ -35,10 +35,10 @@ zuul:
       path: /spt/**
       sensitiveHeaders:
       serviceId: spt-service
-    twenty-one-service:
-      path: /pph21/**
-      sensitiveHeaders:
-      serviceId: twenty-one-service
+    # twenty-one-service:
+      # path: /pph21/**
+      # sensitiveHeaders:
+      # serviceId: twenty-one-service
     storage-service:
       path: /storage/**
       sensitiveHeaders:
