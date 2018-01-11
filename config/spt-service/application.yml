@@ -42,7 +42,8 @@ eureka:
       defaultZone: http://${DISCOVERY_SERVICE_USER}:${DISCOVERY_SERVICE_PASSWORD}@${EUREKA_HOSTNAME}:8761/eureka/
   instance:
     prefer-ip-address: ${PREFER_IP_ADDRESS}
-    
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.port}}}
+
 security:
   basic:
     enabled: false

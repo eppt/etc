@@ -35,13 +35,17 @@ zuul:
       path: /spt/**
       sensitiveHeaders:
       serviceId: spt-service
-    email-service:
-      path: /email/**
-      serviceId: email-service
+    twenty-one-service:
+      path: /pph21/**
+      sensitiveHeaders:
+      serviceId: twenty-one-service
     storage-service:
       path: /storage/**
       sensitiveHeaders:
       serviceId: storage-service
+    email-service:
+      path: /email/**
+      serviceId: email-service
   add-proxy-headers: true
 
 security:
