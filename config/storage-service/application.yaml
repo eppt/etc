@@ -11,7 +11,7 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 server:
-  # port: 8004
+  port: 0
   session:
     cookie:
       http-only: true
@@ -25,8 +25,7 @@ eureka:
     prefer-ip-address: ${PREFER_IP_ADDRESS}
     # leaseRenewalIntervalInSeconds: 10
     # leaseExpirationDurationInSeconds: 2
-    # instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
-
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}  
 security:
   basic:
     enabled: false
