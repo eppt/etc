@@ -44,7 +44,7 @@ zuul:
       sensitiveHeaders:
       serviceId: storage-service
     email-service:
-      path: /email/**
+      path: /notification/**
       serviceId: email-service
   add-proxy-headers: true
 
